@@ -1,4 +1,5 @@
 const os = require('os');
+const timeFormat = require('./timeFormat');
 
 process.stdin.setEncoding('utf-8');
 
@@ -42,7 +43,7 @@ function getOSinfo() {
   console.log(`System: ${type}`);
   console.log(`Release: ${release}`);
   console.log(`CPU model: ${cpu}`);
-  console.log(`Uptime: ~ ${(uptime / 60).toFixed(0)} min`);
+  console.log(`Uptime: ~ ${timeFormat.timeFormat(3700)}`);
   console.log(`User name: ${userInfo.username}`);
   console.log(`Home dir: ${userInfo.homedir}`);
 }
