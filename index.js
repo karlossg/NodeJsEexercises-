@@ -1,38 +1,19 @@
 const http = require('http');
-// const fs = require('fs');
-// const colors = require('colors');
-// const StatMode = require('stat-mode');
+const fs = require('fs');
 
-// fs.stat('./cat.jpg', (err, stats) => {
-//   const statMode = new StatMode(stats);
-//   onsole.log(statMode.toString());
-// });
-
-// fs.readFile('./tekst.txt', 'utf-8', (err, data) => {
-//   console.log('Dane przed zapisem!'.blue);
-//   console.log(data);
-//   fs.appendFile('./tekst.txt', '\n\nA tak wyglądają po zapisie!', (err) => {
-//     if (err) throw err;
-//     console.log('Zapisano!'.blue);
-//     fs.readFile('./tekst.txt', 'utf-8', (err, data) => {
-//       console.log('Dane po zapisie'.blue)
-//       console.log(data);
-//     });
-//   });
-// });
-
-// fs.readdir('./node_modules', 'utf-8', (err, data) => {
-//   fs.writeFile('./npm_modules.txt', `npm modules: ${data}`, (err) => {
-//     if (err) throw err;
-//     console.log('Zapisano!'.blue);
-//     fs.readFile('./npm_modules.txt', 'utf-8', (err, data) => {
-//         console.log('Dane po zapisie'.blue)
-//         console.log(data);
-//     });
-//   });
-// });
-
-const server = http.createServer();
-server.on('request', function (request, response) {
-  
+fs.readFile('index.html', (err, data) => {
+  if (err) throw err; 
+  http.createServer(function(req, res) {
+    if (req.method === 'GET' && req.url === '/hello') {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end(data);
+    } else {
+        fs.readFile('404.png', (err, data) => {
+          res.writeHead(200, {'Content-Type': 'image/png'});
+          if (err) throw err; 
+          res.end(data);
+        })
+    } 
+  }).listen(8080);
+  console.log('Server running at http://localhost:8080/');
 });
