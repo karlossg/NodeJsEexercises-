@@ -1,5 +1,6 @@
-const fs = require('fs');
-const colors = require('colors');
+const http = require('http');
+// const fs = require('fs');
+// const colors = require('colors');
 // const StatMode = require('stat-mode');
 
 // fs.stat('./cat.jpg', (err, stats) => {
@@ -20,13 +21,18 @@ const colors = require('colors');
 //   });
 // });
 
-fs.readdir('./node_modules', 'utf-8', (err, data) => {
-  fs.writeFile('./npm_modules.txt', `npm modules: ${data}`, (err) => {
-    if (err) throw err;
-    console.log('Zapisano!'.blue);
-    fs.readFile('./npm_modules.txt', 'utf-8', (err, data) => {
-        console.log('Dane po zapisie'.blue)
-        console.log(data);
-    });
-  });
+// fs.readdir('./node_modules', 'utf-8', (err, data) => {
+//   fs.writeFile('./npm_modules.txt', `npm modules: ${data}`, (err) => {
+//     if (err) throw err;
+//     console.log('Zapisano!'.blue);
+//     fs.readFile('./npm_modules.txt', 'utf-8', (err, data) => {
+//         console.log('Dane po zapisie'.blue)
+//         console.log(data);
+//     });
+//   });
+// });
+
+const server = http.createServer();
+server.on('request', function (request, response) {
+  
 });
