@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/karlossg/NodeJsEexercises-/issues"
   },
-  "homepage": "https://github.com/karlossg/NodeJsEexercises-#readme"
+  "homepage": "https://github.com/karlossg/NodeJsEexercises-#readme",
+  "dependencies": {
+    "colors": "^1.1.2"
+  }
 }
